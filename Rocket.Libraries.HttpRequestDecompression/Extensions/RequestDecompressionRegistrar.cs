@@ -7,7 +7,8 @@ namespace Rocket.Libraries.HttpRequestDecompression.Extensions
     [ExcludeFromCodeCoverage]
     public static class RequestDecompressionRegistrar
     {
-        public static void RegisterHttpRequestDecompressionServices (this IServiceCollection services)
+        
+        public static void AddHttpRequestDecompressionSupport (this IServiceCollection services)
         {
             services
                 .AddTransient<ICompressionTypeDeterminer, CompressionTypeDeterminer>()

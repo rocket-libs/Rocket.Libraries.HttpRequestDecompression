@@ -6,7 +6,7 @@ namespace Rocket.Libraries.HttpRequestDecompression.Extensions
     [ExcludeFromCodeCoverage]
     public static class RequestDecompressionMiddlewareExtension
     {
-        public static IApplicationBuilder UseGZipDecompression(
+        public static IApplicationBuilder UseHttpRequestDecompression(
             this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<RequestDecompressionMiddleware>();
