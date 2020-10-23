@@ -1,7 +1,7 @@
 # Rocket.Libraries.HttpRequestDecompression
 A library that decompresses  HTTP requests, supports gzip and deflate
 
-![Tests](https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression/workflows/NuGet%20Generation/badge.svg) ![Building](https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression/workflows/NuGet%20Generation/badge.svg) ![Publishing To Nuget](https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression/workflows/NuGet%20Generation/badge.svg) [![GitHub release](https://img.shields.io/github/release/rocket-libs/Rocket.Libraries.HttpRequestDecompression.svg)](https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression/releases/) [![GitHub issues](https://img.shields.io/github/issues/rocket-libs/Rocket.Libraries.HttpRequestDecompression.svg)](https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression/issues/)
+![NuGet Generation](https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression/workflows/NuGet%20Generation/badge.svg)
 
 ## Getting started.
 ### 1. Installation
