@@ -29,7 +29,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-3. Your **compressed** requests from the client **MUST** include the header **Content-Encoding**. For uncompressed requests on the other hand, the **Content-Encoding** header **should be left out**.
+3. Your **compressed** requests from your clients **MUST** include the header **Content-Encoding**. For uncompressed requests on the other hand, the **Content-Encoding** header **should be left out**.
 
 ## Important
 ### Scope of Operation
