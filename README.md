@@ -29,8 +29,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-3. Then in the **Configure** method of your **Startup.cs** file, add the decompression middleware.
-Your compressed requests from the client must include the header **Content-Encoding**, and based on the compression method you're using the should be either ***gzip*** or ***deflate***.
+3. Your **compressed** requests from the client **MUST** include the header **Content-Encoding**. For uncompressed requests on the other hand, the **Content-Encoding** header **should be left out**.
 
 ## Important
 ### Scope of Operation
