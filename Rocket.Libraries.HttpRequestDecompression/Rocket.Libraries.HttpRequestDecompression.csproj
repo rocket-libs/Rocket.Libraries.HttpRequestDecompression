@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <Version>1.0.0-beta01</Version>
+    <Description>A library that decompresses  HTTP requests, supports gzip and deflate.</Description>
+    <PackageProjectUrl>https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression</PackageProjectUrl>
+    <CodeAnalysisRuleSet>../rocket.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>Latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression</RepositoryUrl>
+    <Authors>Nyingi Maina</Authors>
+    <Company>Rocket Libraries</Company>
+    <PackageDescription>A library that decompresses  HTTP requests, supports gzip and deflate.</PackageDescription>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.9" />
+  </ItemGroup>
+
+</Project>
