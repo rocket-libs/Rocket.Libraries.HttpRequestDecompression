@@ -20,7 +20,13 @@ jobs:
 
       - name: Setup .NET Core @ Latest
         uses: actions/setup-dotnet@v1
-
+      
+      - name: Run Tests
+        run: |  
+          cd Rocket.Libraries.HttpRequestDecompression.Tests
+          dotnet test
+          cd ..
+            
       - name: Build solution and generate NuGet package
         run: |  
           cd Rocket.Libraries.HttpRequestDecompression
