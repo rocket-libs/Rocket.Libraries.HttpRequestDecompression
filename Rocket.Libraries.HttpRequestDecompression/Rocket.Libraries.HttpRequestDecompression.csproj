@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Description>A library that decompresses  HTTP requests, supports gzip and deflate.</Description>
     <PackageProjectUrl>https://github.com/rocket-libs/Rocket.Libraries.HttpRequestDecompression</PackageProjectUrl>
     <CodeAnalysisRuleSet>../rocket.ruleset</CodeAnalysisRuleSet>
@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.9" />
   </ItemGroup>
 
 </Project>

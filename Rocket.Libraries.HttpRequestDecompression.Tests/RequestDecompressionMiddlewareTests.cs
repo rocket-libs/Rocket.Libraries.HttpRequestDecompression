@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using Rocket.Libraries.HttpRequestDecompression;
+using Rocket.Libraries.HttpRequestDecompression.Logging;
 using Rocket.Libraries.HttpRequestDecompression.Tests;
 using Xunit;
 
@@ -18,12 +19,14 @@ namespace Lattice.Services.Foundation.Tests.RequestDecompression
         [InlineData (false)]
         public void ExceptionOnlyThrownIfRequestDelegateIsNull (bool passNullRequestDelegate)
         {
+            var logWriter = new Mock<ILogWriter>();
             Action constructMiddleware = () =>
             {
                 new RequestDecompressionMiddleware (
                     passNullRequestDelegate ? null : new RequestDelegate (RequestDel),
                     compressionDeterminer : default,
-                    decompressorProvider : default
+                    decompressorProvider : default,
+                    logWriter.Object
                 );
             };
             if (passNullRequestDelegate)
@@ -47,6 +50,7 @@ namespace Lattice.Services.Foundation.Tests.RequestDecompression
             var compressionDeterminer = new Mock<ICompressionTypeDeterminer> ();
             var decompressorProvider = new Mock<IDecompressorProvider> ();
             var httpRequestMockObjectsProvider = new HttpRequestMockObjectsProvider ();
+            var logWriter = new Mock<ILogWriter>();
 
             compressionDeterminer.Setup (a => a.IsCompressed (It.IsAny<HttpRequest> ()))
                 .Returns (isCompressed);
@@ -54,7 +58,8 @@ namespace Lattice.Services.Foundation.Tests.RequestDecompression
             var requestDecompressionMiddleware = new RequestDecompressionMiddleware (
                 RequestDel,
                 compressionDeterminer.Object,
-                decompressorProvider.Object
+                decompressorProvider.Object,
+                logWriter.Object
             );
 
             await requestDecompressionMiddleware.Invoke (httpRequestMockObjectsProvider.MockHttpContext.Object);

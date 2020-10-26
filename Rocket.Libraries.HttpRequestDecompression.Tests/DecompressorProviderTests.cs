@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using Rocket.Libraries.HttpRequestDecompression.Logging;
 using Rocket.Libraries.HttpRequestDecompression.StreamProviders;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Rocket.Libraries.HttpRequestDecompression.Tests
             var compressionDeterminer = new Mock<ICompressionTypeDeterminer>();
             var gZipStreamProvider = new Mock<IGZipStreamProvider>();
             var deflateStreamProvider = new Mock<IDeflateStreamProvider>();
-            
+            var logWriter = new Mock<ILogWriter>();
+
             compressionDeterminer.Setup(
                 a => a.IsCompressedWithEncodingType(
                     It.IsAny<HttpRequest>(),
@@ -46,7 +48,8 @@ namespace Rocket.Libraries.HttpRequestDecompression.Tests
             var decompressorProvider = new DecompressorProvider(
                 compressionDeterminer.Object,
                 gZipStreamProvider.Object,
-                deflateStreamProvider.Object
+                deflateStreamProvider.Object,
+                logWriter.Object
             );
 
             var request = new HttpRequestMockObjectsProvider ().HttpRequest;
@@ -69,6 +72,7 @@ namespace Rocket.Libraries.HttpRequestDecompression.Tests
             string compressionMethod)
         {
             var compressionDeterminer = new Mock<ICompressionTypeDeterminer>();
+            var logWriter = new Mock<ILogWriter>();
             
             compressionDeterminer.Setup(
                 a => a.IsCompressedWithEncodingType(
@@ -79,7 +83,8 @@ namespace Rocket.Libraries.HttpRequestDecompression.Tests
             var decompressorProvider = new DecompressorProvider(
                 compressionDeterminer.Object,
                 gZipStreamProvider.Object,
-                deflateStreamProvider.Object
+                deflateStreamProvider.Object,
+                logWriter.Object
             );
 
             var request = new HttpRequestMockObjectsProvider ().HttpRequest;
