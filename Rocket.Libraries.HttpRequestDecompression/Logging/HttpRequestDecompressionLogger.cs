@@ -6,11 +6,11 @@ namespace Rocket.Libraries.HttpRequestDecompression.Logging
    
 
     [ExcludeFromCodeCoverage]
-    public class LoggerWrapper : ILogWriter
+    public class HttpRequestDecompressionLogger : ILogWriter
     {
-        private readonly ILogger logger;
+        private readonly ILogger<HttpRequestDecompressionLogger> logger;
 
-        public LoggerWrapper(ILogger logger)
+        public HttpRequestDecompressionLogger(ILogger<HttpRequestDecompressionLogger> logger)
         {
             this.logger = logger;
         }

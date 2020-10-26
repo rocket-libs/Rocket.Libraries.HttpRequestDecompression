@@ -25,7 +25,7 @@ namespace Rocket.Libraries.HttpRequestDecompression.Extensions
         {
             if(enableLogging)
             {
-                services.AddTransient<ILogWriter, LoggerWrapper>();
+                services.AddTransient<ILogWriter, HttpRequestDecompressionLogger>();
             }
             else
             {
