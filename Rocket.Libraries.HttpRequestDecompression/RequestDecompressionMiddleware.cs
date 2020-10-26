@@ -12,33 +12,33 @@ namespace Rocket.Libraries.HttpRequestDecompression
         private readonly IDecompressorProvider decompressorProvider;
         private readonly ILogWriter logWriter;
 
-        public RequestDecompressionMiddleware(
-            RequestDelegate next, 
+        public RequestDecompressionMiddleware (
+            RequestDelegate next,
             ICompressionTypeDeterminer compressionDeterminer,
             IDecompressorProvider decompressorProvider,
             ILogWriter logWriter)
         {
-            this.next = next ?? throw new ArgumentNullException(nameof(next));
+            this.next = next ??
+                throw new ArgumentNullException (nameof (next));
             this.compressionDeterminer = compressionDeterminer;
             this.decompressorProvider = decompressorProvider;
             this.logWriter = logWriter;
         }
 
-        public async Task Invoke(HttpContext httpContext)
+        public async Task Invoke (HttpContext httpContext)
         {
-            if (compressionDeterminer.IsCompressed(httpContext.Request))
+            if (compressionDeterminer.IsCompressed (httpContext.Request))
             {
-                logWriter.LogInformation("Request is compressed");
-                var decompressor = decompressorProvider.GetDecompressor(httpContext.Request);
+                logWriter.LogInformation ($"Compressed {httpContext.Request.Method} request to {httpContext.Request.Path}");
+                var decompressor = decompressorProvider.GetDecompressor (httpContext.Request);
                 httpContext.Request.Body = decompressor;
             }
             else
             {
-                logWriter.LogInformation("Request is NOT compressed");
+                logWriter.LogInformation ($"NOT Compressed {httpContext.Request.Method} request to {httpContext.Request.Path}");
             }
-            await next(httpContext);
+            await next (httpContext);
         }
 
-        
     }
 }
